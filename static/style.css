@@ -1,0 +1,145 @@
+:root {
+  --main-m: 0;
+}
+
+body {
+  background-color: #728db3;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.box {
+  border-radius: 25px;
+  width: 80%;
+  height: 550px;
+  padding: 2.5em;
+  /* box-shadow: 0 20px 50px -25px rgba(0, 0, 0, 0.7);
+  background-color: rgba(252, 214, 0, 0.603); */
+  display: flex;
+  align-items: flex-start;
+  /* 세로 방향으로 위쪽 정렬 */
+  justify-content: center;
+  /* 가로 방향 중앙 정렬 */
+  margin: 0 auto;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.box > .students {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: auto;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 10px;
+  gap: 5px;
+}
+
+.box > .students > [class^="line"] {
+  width: 120px;
+  margin: 10px 7px;
+  /* 세로(10px)와 가로(10px) 간격 설정 */
+  display: flex;
+  /* 내부 요소를 정렬하기 위해 flexbox 사용 */
+  flex-direction: column;
+  /* 내부 요소를 세로로 정렬 */
+  align-items: center;
+  /* 내부 요소를 가로 방향 중앙 정렬 */
+}
+
+.box > .students > [class^="line"] > [class^="b"] {
+  background-color: rgb(0, 255, 255);
+  border: 3px double;
+  width: 80px;
+  height: 40px;
+  text-align: center;
+  padding: 7px;
+  border-radius: 5px;
+  box-shadow: 0 20px 50px -25px rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 5px auto;
+}
+
+.box > .students > [class^="line"] > [class^="b"][lock="true"] {
+  background-color: #ffd700;
+  border: 3px solid #b8860b;
+  box-shadow: 0 0 10px rgba(184, 134, 11, 0.5);
+}
+
+.table {
+  width: 100%;
+  height: 50px;
+  margin: 15px auto;
+}
+
+.table h2 {
+  /* 교탁 */
+  background-color: rgb(255, 255, 255);
+  border: 3px double;
+  width: 200px;
+  height: 40px;
+  font-size: 30px;
+  text-align: center;
+  padding: 7px;
+  border-radius: 5px;
+  box-shadow: 0 20px 50px -25px rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  /* 텍스트 세로 중앙 정렬 */
+  justify-content: center;
+  /* 텍스트 가로 중앙 정렬 */
+  margin: 10px auto;
+  /* 가로 방향 중앙 정렬 */
+}
+
+/* .mbutton {
+  background-color: rgba(252, 214, 0, 0.603);
+  width: 200px;
+  height: 80px;
+  border-radius: 10px;
+  font-size: 30px;
+  font: bold;
+} */
+
+.bbox {
+  border-radius: 25px;
+  width: 80%;
+  height: 50px;
+  padding: 0px;
+  display: flex;
+  flex-direction: row;
+  /* 내부 요소를 가로로 정렬 */
+  align-items: flex-end;
+  /* 세로 방향으로 위쪽 정렬 */
+  justify-content: center;
+  /* 가로 방향 중앙 정렬 */
+  margin: 0 auto;
+}
+
+.box > .students > [class^="line"] > [class^="b"] button {
+  width: 100%;
+  height: 40px;
+  background-color: rgb(0, 255, 255);
+  font: small-caps bold 18px/1.4 sans-serif;
+  font-size: larger;
+  border: none;
+  border-radius: 5px;
+}
+
+.box > .students > [class^="line"] > [class^="b"] button:hover {
+  /* 친구 이름에 호버시 효과 */
+  background-color: rgb(210, 251, 255);
+  color: rgb(0, 0, 0);
+  cursor: pointer;
+  box-shadow: 5px 5px 5px 0px rgba(0, 0, 0, 0.459);
+  font: small-caps bold 18px/1.4 sans-serif;
+  font-size: larger;
+}
+.save {
+  padding-left: 100px;
+  background-color: beige;
+}

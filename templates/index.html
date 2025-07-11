@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+    <title>자리바꾸기</title>
+  </head>
+
+  <body>
+    <div
+      class="box"
+      onselectstart="return false"
+      onmousedown="return false"
+    ></div>
+    <div class="bbox">
+      <button
+        class="mbutton"
+        type="button"
+        onclick="mixVer2();"
+        style="
+          background-color: rgba(252, 214, 0, 0.603);
+          width: 200px;
+          height: 80px;
+          border-radius: 10px;
+          font-size: 30px;
+          font: bold;
+        "
+      >
+        자리바꾸기
+      </button>
+    </div>
+
+    <div class="controls">
+        <button class="save" onclick="saveToServer()">현재 자리 저장</button>
+        <label><input type="checkbox" id="prevent-duplicates" checked> 옆자리 중복 방지</label>
+    </div>
+
+    <h3>저장된 기록</h3>
+    <div id="history-list">
+        <!-- History will be populated by JS -->
+    </div>
+    <button onclick="loadSelectedHistory()">선택한 기록 불러오기</button>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+  </body>
+</html>
