@@ -64,20 +64,24 @@ const htmlrender = () => {
 const renderHistory = () => {
   const historyList = document.getElementById("history-list");
   historyList.innerHTML = "";
-  historyData.forEach((history, index) => {
+
+  const keys = Object.keys(historyData);
+  keys.forEach((key, index) => {
     const radioId = `history-${index}`;
+
     const radio = document.createElement("input");
     radio.type = "radio";
     radio.name = "history";
     radio.id = radioId;
-    radio.value = index;
-    if (index === historyData.length - 1) {
-      radio.checked = true;
+    radio.value = key; // key 자체가 value로 들어감
+
+    if (index === keys.length - 1) {
+      radio.checked = true; // 가장 마지막 기록을 기본 선택
     }
 
     const label = document.createElement("label");
     label.htmlFor = radioId;
-    label.textContent = `기록 ${index + 1}`;
+    label.textContent = `기록 (${key})`; // 라벨도 key 그대로 보여줌
 
     historyList.appendChild(radio);
     historyList.appendChild(label);
@@ -93,9 +97,10 @@ window.onload = function () {
         members = data.members;
       }
 
-      if (data.last && data.last.length > 0) {
+      if (data.last && Object.keys(data.last).length > 0) {
         historyData = data.last;
-        numls = historyData[historyData.length - 1].slice(); // Use a copy
+        const lastValue = Object.values(historyData).at(-1);
+        numls = lastValue.slice(); // Use a copy
       } else {
         // Initialize numls if no history
         numls = Array.from({ length: members.length }, (_, i) => i);
@@ -159,7 +164,20 @@ const getPosition = (indexInNumls) => {
   }
   return null;
 };
+const distance = (studentIdx1, studentIdx2, arrange) => {
+  const index1 = arrange.indexOf(studentIdx1);
+  const index2 = arrange.indexOf(studentIdx2);
+  if (index1 === -1 || index2 === -1) return -1;
 
+  const pos1 = getPosition(index1);
+  const pos2 = getPosition(index2);
+  if (!pos1 || !pos2) return false;
+
+  // Calculate Euclidean distance between two positions
+  const dx = pos1.col - pos2.col;
+  const dy = pos1.row - pos2.row;
+  return Math.sqrt(dx * dx + dy * dy);
+};
 const areNeighbors = (studentIdx1, studentIdx2, arrangement) => {
   const index1 = arrangement.indexOf(studentIdx1);
   const index2 = arrangement.indexOf(studentIdx2);
@@ -226,15 +244,21 @@ function mixVer2() {
 }
 
 function saveToServer() {
+  const label = prompt("기록 이름을 입력하세요 (예: '7월 자리바꿈'):");
+
+  if (!label) {
+    alert("기록 이름이 필요합니다.");
+    return;
+  }
+
   fetch("/save", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ last: numls }),
+    body: JSON.stringify({ label: label, last: numls }),
   })
     .then((res) => res.json())
     .then((data) => {
       alert("자리 저장 완료!");
-      // Reload data to update history
       window.location.reload();
     });
 }

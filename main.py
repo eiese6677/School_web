@@ -18,11 +18,13 @@ def save():
         with open(DATA_FILE, "r", encoding="utf-8") as f:
             data = json.load(f)
     except (FileNotFoundError, json.JSONDecodeError):
-        data = {"members": {}, "last": []}
+        data = {"members": [], "last": {}}
 
-    if "last" in new_data and isinstance(new_data["last"], list):
-        # Append the new arrangement to the history
-        data.setdefault("last", []).append(new_data["last"])
+    if "label" in new_data and "last" in new_data:
+        label = new_data["label"]
+        arrangement = new_data["last"]
+        if isinstance(arrangement, list):
+            data.setdefault("last", {})[label] = arrangement
 
     with open(DATA_FILE, "w", encoding="utf-8") as f:
         json.dump(data, f, ensure_ascii=False, indent=2)
