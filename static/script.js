@@ -67,7 +67,7 @@ const renderHistory = () => {
 
   const keys = Object.keys(historyData);
   keys.forEach((key, index) => {
-    const radioId = `history-${index}`;
+    const radioId = String(index);
 
     const radio = document.createElement("input");
     radio.type = "radio";
