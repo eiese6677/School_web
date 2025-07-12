@@ -4,7 +4,7 @@ import os
 
 app = Flask(__name__, static_folder='static')
 
-DATA_FILE = "data.json"
+DATA_FILE = "app_data.json"
 
 @app.route("/")
 def home():
@@ -37,7 +37,7 @@ def load():
     except (FileNotFoundError, json.JSONDecodeError):
         # If file doesn't exist or is empty, return a default structure
         data = {
-            "members": {"men": [], "women": [], "no": []},
+            "members": [],
             "last": []
         }
     return jsonify(data)
