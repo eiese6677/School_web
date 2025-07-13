@@ -90,6 +90,18 @@ const renderHistory = () => {
 };
 
 window.onload = function () {
+  // Toggle history visibility
+  const heading = document.getElementById("history-heading");
+  const historyContainer = document.getElementById("history-list");
+  const loadBtn = document.getElementById("load-history-btn");
+  // 기본은 숨김
+  historyContainer.style.display = "none";
+  loadBtn.style.display = "none";
+  heading.addEventListener("click", () => {
+    const willShow = historyContainer.style.display === "none";
+    historyContainer.style.display = willShow ? "flex" : "none";
+    loadBtn.style.display = willShow ? "inline-block" : "none";
+  });
   fetch("/load")
     .then((res) => res.json())
     .then((data) => {

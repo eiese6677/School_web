@@ -1,5 +1,8 @@
 :root {
   --main-m: 0;
+  --primary: #f5c518;
+  --primary-hover: #ffd84d;
+  --surface: #f0f4ff;
 }
 
 body {
@@ -14,13 +17,9 @@ body {
   width: 80%;
   height: 550px;
   padding: 2.5em;
-  /* box-shadow: 0 20px 50px -25px rgba(0, 0, 0, 0.7);
-  background-color: rgba(252, 214, 0, 0.603); */
   display: flex;
   align-items: flex-start;
-  /* 세로 방향으로 위쪽 정렬 */
   justify-content: center;
-  /* 가로 방향 중앙 정렬 */
   margin: 0 auto;
   flex-direction: column;
   overflow: hidden;
@@ -39,14 +38,10 @@ body {
 
 .box > .students > [class^="line"] {
   width: 120px;
-  margin: 10px 7px;
-  /* 세로(10px)와 가로(10px) 간격 설정 */
+  margin: 10px 5px;
   display: flex;
-  /* 내부 요소를 정렬하기 위해 flexbox 사용 */
   flex-direction: column;
-  /* 내부 요소를 세로로 정렬 */
   align-items: center;
-  /* 내부 요소를 가로 방향 중앙 정렬 */
 }
 
 .box > .students > [class^="line"] > [class^="b"] {
@@ -89,21 +84,9 @@ body {
   box-shadow: 0 20px 50px -25px rgba(0, 0, 0, 0.7);
   display: flex;
   align-items: center;
-  /* 텍스트 세로 중앙 정렬 */
   justify-content: center;
-  /* 텍스트 가로 중앙 정렬 */
   margin: 10px auto;
-  /* 가로 방향 중앙 정렬 */
 }
-
-/* .mbutton {
-  background-color: rgba(252, 214, 0, 0.603);
-  width: 200px;
-  height: 80px;
-  border-radius: 10px;
-  font-size: 30px;
-  font: bold;
-} */
 
 .bbox {
   border-radius: 25px;
@@ -139,7 +122,107 @@ body {
   font: small-caps bold 18px/1.4 sans-serif;
   font-size: larger;
 }
+
 .save {
   padding-left: 100px;
-  background-color: beige;
+  background: #f5f5dc !important; /* beige */
+  color: #000 !important;
+  border: 1px solid #bdaa80 !important;
+}
+
+#load-history-btn {
+  background: #f0f4ff !important;
+  color: #000 !important;
+  border: 1px solid #bac4ff !important;
+  padding: 6px 14px !important;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  border-radius: 6px !important;
+  transition: background 0.2s ease, transform 0.1s ease;
+}
+
+#load-history-btn:hover {
+  background: #e5ebff !important;
+  transform: translateY(-1px);
+}
+
+#load-history-btn:active {
+  background: #d7dbff !important;
+  transform: translateY(0);
+}
+
+.save:hover {
+  background: #e9e2c4 !important;
+}
+
+/* --------- History List Styles --------- */
+#history-list {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: 200px;
+  margin: 10px 0 10px 10px; /* left align */
+}
+
+#history-list br {
+  display: none;
+}
+
+#history-list input[type="radio"] {
+  display: none;
+}
+
+#history-list label {
+  display: block;
+  padding: 6px 10px;
+  border-radius: 8px;
+  background: #f0f4ff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+  font-weight: 600;
+}
+
+#history-list label:hover {
+  background: #e5ebff;
+  transform: translateY(-1px);
+}
+
+#history-list input[type="radio"]:checked + label {
+  background: var(--primary);
+  color: #ffffff;
+  transform: scale(1.02);
+}
+
+.mbutton {
+  min-width: 160px !important;
+  height: 60px !important;
+  font-size: 24px !important;
+}
+.mbutton {
+  background: var(--primary) !important;
+  color: #000000 !important;
+  border: 2px solid #c9a000 !important;
+  border-radius: 8px !important;
+  padding: 10px 20px !important;
+  font-size: 18px !important;
+  font-weight: 600 !important;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.mbutton:hover {
+  color: #000 !important;
+  transform: translateY(-1px);
+  background: #dfe4ff !important;
+}
+
+.mbutton:active {
+  transform: translateY(0);
+}
+
+.controls label {
+  color: #ffffff;
+  font-weight: 500;
 }

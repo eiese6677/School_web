@@ -15,21 +15,7 @@
       onmousedown="return false"
     ></div>
     <div class="bbox">
-      <button
-        class="mbutton"
-        type="button"
-        onclick="mixVer2();"
-        style="
-          background-color: rgba(252, 214, 0, 0.603);
-          width: 200px;
-          height: 80px;
-          border-radius: 10px;
-          font-size: 30px;
-          font: bold;
-        "
-      >
-        자리바꾸기
-      </button>
+      <button class="mbutton" type="button" onclick="mixVer2();">자리바꾸기</button>
     </div>
 
     <div class="controls">
@@ -37,11 +23,11 @@
         <label><input type="checkbox" id="prevent-duplicates" checked> 옆자리 중복 방지</label>
     </div>
 
-    <h3>저장된 기록</h3>
+    <h3 id="history-heading" style="cursor:pointer; user-select:none;">저장된 기록</h3>
     <div id="history-list">
         <!-- History will be populated by JS -->
     </div>
-    <button onclick="loadSelectedHistory()">선택한 기록 불러오기</button>
+    <button id="load-history-btn" onclick="loadSelectedHistory()">선택한 기록 불러오기</button>
 
     <script src="{{ url_for('static', filename='script.js') }}"></script>
   </body>
